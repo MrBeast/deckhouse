@@ -19,6 +19,7 @@
 set -Eeuo pipefail
 shopt -s inherit_errexit
 shopt -s failglob
+set -x
 
 # Base env
 CLUSTER_PKI_DIR=/pki
