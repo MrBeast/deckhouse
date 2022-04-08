@@ -49,5 +49,4 @@ locals {
   additional_tags             = lookup(var.providerClusterConfiguration, "tags", {})
   nat_gateway_public_ip_count = contains(keys(var.providerClusterConfiguration), "standard") ? lookup(var.providerClusterConfiguration.standard, "natGatewayPublicIpCount", 0) : 0
   ssh_allow_list              = lookup(var.providerClusterConfiguration, "sshAllowList", null)
-
 }
