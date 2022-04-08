@@ -27,7 +27,7 @@ shell:
   beforeInstall:
   - apk add --no-cache jq curl bash gettext grep
   install:
-  - echo "https://storage.googleapis.com/kubernetes-release/release/{{ $version }}.{{ index $.CandiVersionMap "k8s" $version "patch" }}/bin/linux/amd64/kubect"
+  - echo https://storage.googleapis.com/kubernetes-release/release/{{ $version }}.{{ index $.CandiVersionMap "k8s" $version "patch" }}/bin/linux/amd64/kubect > /usr/aaaa
   - curl -L https://storage.googleapis.com/kubernetes-release/release/{{ $version }}.{{ index $.CandiVersionMap "k8s" $version "patch" }}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl
   - curl -L https://github.com/cloudflare/cfssl/releases/download/v1.4.1/cfssl-certinfo_1.4.1_linux_amd64 -o /usr/local/bin/cfssl-certinfo
   - curl -L https://github.com/cloudflare/cfssl/releases/download/v1.4.1/cfssl_1.4.1_linux_amd64 -o /usr/local/bin/cfssl
