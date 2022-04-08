@@ -12,6 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+variable "providerClusterConfiguration" {
+  type = any
+  validation {
+    condition     = contains(keys(var.providerClusterConfiguration), "subnetworkCIDR") ? cidrsubnet(var.providerClusterConfiguration.subnetworkCIDR, 0, 0) == var.providerClusterConfiguration.subnetworkCIDR : true
+    error_message = "Invalid subnetworkCIDR in GCPClusterConfiguration."
+  }
+}
+
 variable "prefix" {
   type = string
 }
@@ -22,4 +30,8 @@ variable "network_self_link" {
 
 variable "pod_subnet_cidr" {
   type = string
+}
+
+locals {
+  ssh_allow_list   = lookup(var.providerClusterConfiguration, "sshAllowList", null )
 }

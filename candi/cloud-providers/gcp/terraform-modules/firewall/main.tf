@@ -16,6 +16,7 @@ resource "google_compute_firewall" "ssh-and-icmp" {
   name    = join("-", [var.prefix, "ssh-and-ping"])
   network = var.network_self_link
 
+  source_ranges = local.ssh_allow_list
   allow {
     protocol = "icmp"
   }
